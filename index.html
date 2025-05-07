@@ -6,7 +6,6 @@
   <title>奇乐乐管理后台</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* iframe 公共样式，使用绝对定位覆盖内容区域 */
     .iframe {
       position: absolute;
       top: 0;
@@ -21,13 +20,13 @@
 
   <!-- 顶部导航栏 -->
   <header class="bg-white shadow-sm sticky top-0 z-10">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold tracking-tight">奇乐乐管理后台（外）</h1>
-      <div class="space-x-3">
-        <button onclick="showPage(0)" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl text-sm font-medium transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0">
+      <h1 class="text-xl sm:text-2xl font-bold tracking-tight">奇乐乐管理后台（外）</h1>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="showPage(0)" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition">
           用户列表
         </button>
-        <button onclick="showPage(1)" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-xl text-sm font-medium transition">
+        <button onclick="showPage(1)" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition">
           新增用户
         </button>
       </div>
@@ -35,9 +34,8 @@
   </header>
 
   <!-- 主内容区域 -->
-  <main class="flex justify-center items-start px-4 py-6">
-    <div class="w-full max-w-7xl bg-white rounded-2xl shadow-md overflow-hidden h-[80vh] relative">
-      <!-- 两个 iframe 页面，初始只设置第一个的 src -->
+  <main class="px-2 sm:px-4 py-4">
+    <div class="w-full max-w-7xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden h-[calc(100vh-7rem)] sm:h-[80vh] relative">
       <iframe id="iframe0"
         src="https://lingge.gululu.store/beweb/#/shareCollectList/1915248532386877440"
         class="iframe" style="visibility: visible; z-index: 1;"></iframe>
@@ -59,8 +57,7 @@
       "https://lingge.gululu.store/beweb/#/shareCollect?appId=1915248532386877440"
     ];
 
-    // 记录每个 iframe 是否已经加载过
-    const loaded = [true, false]; // 第一个已经设置了 src，所以标记为 true
+    const loaded = [true, false];
 
     function showPage(index) {
       frames.forEach((frame, i) => {
